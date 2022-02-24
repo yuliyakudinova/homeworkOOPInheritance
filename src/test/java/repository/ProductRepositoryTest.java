@@ -1,9 +1,9 @@
 package repository;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.product.Book;
-import ru.netology.product.Product;
-import ru.netology.product.Smartphone;
+import domain.Book;
+import domain.Product;
+import domain.Smartphone;
 
 import static org.junit.jupiter.api.Assertions.*;
 

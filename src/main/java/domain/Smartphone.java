@@ -1,4 +1,6 @@
-package ru.netology.product;
+package domain;
+
+import domain.Product;
 
 public class Smartphone extends Product {
     private String manufacturer;
