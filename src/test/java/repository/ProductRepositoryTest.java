@@ -1,5 +1,7 @@
 package repository;
 
+import domain.NotFoundException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import domain.Book;
 import domain.Product;
@@ -42,6 +44,7 @@ class ProductRepositoryTest {
         assertArrayEquals(expected, actual);
     }
 
+
     @Test
     void removeById() {
         ProductRepository repository = new ProductRepository();
@@ -58,5 +61,19 @@ class ProductRepositoryTest {
         Product[] expected = {one, three};
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void removeNotFoundId() {
+        ProductRepository repository = new ProductRepository();
+        Product one = new Product(111, "First", 125);
+        Product two = new Product(112, "Second", 524);
+        Product three = new Product(113, "Third", 5582);
+
+        repository.save(one);
+        repository.save(two);
+        repository.save(three);
+
+        Assertions.assertThrows(NotFoundException.class, () -> repository.removeById(114));
     }
 }
